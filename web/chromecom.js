@@ -245,14 +245,6 @@ if (window === top) {
   // Unfortunately, the window and tab index are not restored. And if it was
   // the only tab in an incognito window, then the tab is not restored either.
   addEventListener("unload", function () {
-    // If the runtime is still available, the unload is most likely a normal
-    // tab closure. Otherwise it is most likely an extension reload.
-    if (!isRuntimeAvailable()) {
-      localStorage.setItem(
-        "unload-" + Date.now() + "-" + document.hidden + "-" + location.href,
-        JSON.stringify(history.state)
-      );
-    }
   });
 }
 
