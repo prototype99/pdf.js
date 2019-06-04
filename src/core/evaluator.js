@@ -2007,6 +2007,7 @@ class PartialEvaluator {
       textRunBreakAllowed: false,
       transform: null,
       fontName: null,
+      chars: []
     };
     var SPACE_FACTOR = 0.3;
     var MULTI_SPACE_FACTOR = 1.5;
@@ -2130,6 +2131,7 @@ class PartialEvaluator {
         height: textChunk.height,
         transform: textChunk.transform,
         fontName: textChunk.fontName,
+        chars: textChunk.chars
       };
     }
 
@@ -2174,6 +2176,9 @@ class PartialEvaluator {
           }
         }
 
+        let prevWidth = textChunk.width + width;
+        let prevHeight = textChunk.height + height;
+
         var tx = 0;
         var ty = 0;
         if (!font.vertical) {
@@ -2188,6 +2193,15 @@ class PartialEvaluator {
         textState.translateTextMatrix(tx, ty);
 
         textChunk.str.push(glyphUnicode);
+        textChunk.chars.push({
+          glyphUnicode,
+          vertical: !!font.vertical,
+          x1: textChunk.transform[4]+prevWidth*textChunk.textAdvanceScale,
+          x2: textChunk.transform[4]+(textChunk.width+width)*textChunk.textAdvanceScale,
+          y1: textChunk.transform[5],
+          y2: textChunk.transform[5]+textState.fontSize*textChunk.textAdvanceScale,
+          fs: textState.fontSize*textChunk.textAdvanceScale
+        });
       }
 
       if (!font.vertical) {
@@ -2230,6 +2244,7 @@ class PartialEvaluator {
 
       textContentItem.initialized = false;
       textContentItem.str.length = 0;
+      textContentItem.chars = [];
     }
 
     function enqueueChunk() {

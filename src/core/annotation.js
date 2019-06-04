@@ -306,6 +306,9 @@ class Annotation {
       id: params.id,
       modificationDate: this.modificationDate,
       rect: this.rectangle,
+      quadPoints: dict.getArray('QuadPoints'),
+      title: dict.getArray('T'),
+      dateModified: dict.getArray('M'),
       subtype: params.subtype,
     };
 
