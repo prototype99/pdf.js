@@ -89,11 +89,13 @@ class PDFSidebar {
     this.outlineButton = elements.outlineButton;
     this.attachmentsButton = elements.attachmentsButton;
     this.layersButton = elements.layersButton;
+    this.annotationsButton = elements.annotationsButton;
 
     this.thumbnailView = elements.thumbnailView;
     this.outlineView = elements.outlineView;
     this.attachmentsView = elements.attachmentsView;
     this.layersView = elements.layersView;
+    this.annotationsView = elements.annotationsView;
 
     this._outlineOptionsContainer = elements.outlineOptionsContainer;
     this._currentOutlineItemButton = elements.currentOutlineItemButton;
@@ -207,6 +209,11 @@ class PDFSidebar {
           return false;
         }
         break;
+      case SidebarView.ANNOTATIONS:
+        if (this.annotationsButton.disabled) {
+          return false;
+        }
+        break;
       default:
         console.error(`PDFSidebar._switchView: "${view}" is not a valid view.`);
         return false;
@@ -229,6 +236,7 @@ class PDFSidebar {
       view === SidebarView.ATTACHMENTS
     );
     this.layersButton.classList.toggle("toggled", view === SidebarView.LAYERS);
+    this.annotationsButton.classList.toggle('toggled', view === SidebarView.ANNOTATIONS);
     // ... and for all views.
     this.thumbnailView.classList.toggle("hidden", view !== SidebarView.THUMBS);
     this.outlineView.classList.toggle("hidden", view !== SidebarView.OUTLINE);
@@ -237,6 +245,7 @@ class PDFSidebar {
       view !== SidebarView.ATTACHMENTS
     );
     this.layersView.classList.toggle("hidden", view !== SidebarView.LAYERS);
+    this.annotationsView.classList.toggle('hidden', view !== SidebarView.ANNOTATIONS);
 
     // Finally, update view-specific CSS classes.
     this._outlineOptionsContainer.classList.toggle(
@@ -409,6 +418,10 @@ class PDFSidebar {
 
     this.attachmentsButton.addEventListener("click", () => {
       this.switchView(SidebarView.ATTACHMENTS);
+    });
+    
+    this.annotationsButton.addEventListener('click', () => {
+      this.switchView(SidebarView.ANNOTATIONS);
     });
 
     this.layersButton.addEventListener("click", () => {

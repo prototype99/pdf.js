@@ -129,15 +129,17 @@ function getViewerConfiguration() {
       viewerContainer: document.getElementById("viewerContainer"),
       toggleButton: document.getElementById("sidebarToggle"),
       // Buttons
-      thumbnailButton: document.getElementById("viewThumbnail"),
-      outlineButton: document.getElementById("viewOutline"),
-      attachmentsButton: document.getElementById("viewAttachments"),
-      layersButton: document.getElementById("viewLayers"),
+      thumbnailButton: document.getElementById('viewThumbnail'),
+      outlineButton: document.getElementById('viewOutline'),
+      attachmentsButton: document.getElementById('viewAttachments'),
+      layersButton: document.getElementById('viewLayers'),
+      annotationsButton: document.getElementById('viewAnnotations'),
       // Views
-      thumbnailView: document.getElementById("thumbnailView"),
-      outlineView: document.getElementById("outlineView"),
-      attachmentsView: document.getElementById("attachmentsView"),
-      layersView: document.getElementById("layersView"),
+      thumbnailView: document.getElementById('thumbnailView'),
+      outlineView: document.getElementById('outlineView'),
+      attachmentsView: document.getElementById('attachmentsView'),
+      layersView: document.getElementById('layersView'),
+      annotationsView: document.getElementById('annotationsView'),
       // View-specific options
       outlineOptionsContainer: document.getElementById(
         "outlineOptionsContainer"
