@@ -2207,7 +2207,9 @@ class PartialEvaluator {
         let charWidth = textChunk.width + width - prevWidth;
         let charHeight = textState.fontSize;
         let rect = Util.getAxialAlignedBoundingBox(
-          [0, 0, charWidth, charHeight], textState.textMatrix);
+          [0, 0, charWidth, charHeight],
+          Util.transform(textState.ctm, textState.textMatrix)
+        );
 
         textChunk.chars.push({
           c: glyphUnicode,
