@@ -2206,16 +2206,15 @@ class PartialEvaluator {
 
         let charWidth = textChunk.width + width - prevWidth;
         let charHeight = textState.fontSize;
+        let m = Util.transform(textState.ctm, textState.textMatrix);
         let rect = Util.getAxialAlignedBoundingBox(
-          [0, 0, charWidth, charHeight],
-          Util.transform(textState.ctm, textState.textMatrix)
-        );
+          [0, 0, charWidth, charHeight], m);
 
         textChunk.chars.push({
           c: glyphUnicode,
           rect,
           fontSize: textState.fontSize * textChunk.textAdvanceScale,
-          rotation: matrixToDegrees(textState.textMatrix)
+          rotation: matrixToDegrees(m)
         });
 
         textState.translateTextMatrix(tx, ty);
