@@ -84,6 +84,22 @@ class AnnotationLayerBuilder {
         return;
       }
 
+      const allowedSubtypes = [
+        'Link',
+        'Widget',
+        'Line',
+        'Square',
+        'Circle',
+        'PolyLine',
+        'Polygon',
+        'Caret',
+        'Ink',
+        'Squiggly',
+        'StrikeOut',
+        'FileAttachment'
+      ];
+      annotations = annotations.filter(x => allowedSubtypes.includes(x.subtype));
+
       const parameters = {
         viewport: viewport.clone({ dontFlip: true }),
         div: this.div,
