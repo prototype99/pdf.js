@@ -356,8 +356,7 @@ class Page {
           'Caret',
           'Ink',
           'Squiggly',
-          'StrikeOut',
-          'FileAttachment'
+          'StrikeOut'
         ];
         annotations = annotations.filter(x => allowedSubtypes.includes(x.data.subtype));
 
