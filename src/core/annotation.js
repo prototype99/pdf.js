@@ -307,6 +307,7 @@ class Annotation {
       modificationDate: this.modificationDate,
       rect: this.rectangle,
       subtype: params.subtype,
+      nm: dict.get("NM"),
     };
 
     this._fallbackFontDict = null;
