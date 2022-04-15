@@ -1,0 +1,9 @@
+[remote "upstream"]
+	url = git@github.com:mozilla/pdf.js.git
+	fetch = +refs/heads/*:refs/remotes/upstream/*
+[remote "zotero"]
+	url = git@github.com:zotero/pdf.js.git
+	fetch = +refs/heads/*:refs/remotes/zotero/*
+[remote "EdiEco"]
+	url = git@github.com:EdiEco/pdf.js.git
+	fetch = +refs/heads/*:refs/remotes/EdiEco/*
